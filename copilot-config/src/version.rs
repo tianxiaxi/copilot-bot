@@ -11,7 +11,6 @@ pub struct CommitInfo {
 
 #[derive(Debug)]
 pub struct VersionInfo {
-    /// copilot's version, such as "1.57.0", "1.58.0-beta.1", "1.59.0-nightly", etc.
     pub version: String,
 
     pub homepage: String,

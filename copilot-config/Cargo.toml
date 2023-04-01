@@ -7,3 +7,6 @@ edition = "2021"
 
 [dependencies]
 serde = { workspace = true }
+copilot-utils = { path = "../copilot-utils" }
+lazy_static = "1.4.0"
+toml = "0.7.3"

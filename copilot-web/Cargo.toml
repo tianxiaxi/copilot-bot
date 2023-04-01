@@ -12,5 +12,6 @@ tower-http = { version = "0.4.0", features = ["cors", "trace"] }
 tracing = { workspace = true }
 tracing-subscriber = { workspace = true, features = ["local-time", "fmt"] }
 copilot-config = { path = "../copilot-config" }
+copilot-utils = { path = "../copilot-utils" }
 tracing-appender = "0.2.2"
 

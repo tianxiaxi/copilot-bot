@@ -14,8 +14,6 @@ repository = "https://github.com/tianxiaxi/copilot-bot"
 license = "Apache-2.0"
 
 [workspace.dependencies]
-diesel = { version = "2.0.3", features = ["postgres", "mysql", "sqlite"] }
-serde = "1.0.159"
-toml_edit = "0.19.8"
+serde = { version = "1.0.159", features = ["derive"] }
 tracing = "0.1.37"
 tracing-subscriber = "0.3.16"

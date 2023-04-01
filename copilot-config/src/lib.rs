@@ -1,16 +1,13 @@
+#[macro_use]
+extern crate lazy_static;
+
 pub mod version;
+pub mod i18n;
+pub mod config;
 
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
-}
+// Load configuration and i18n from config file
+lazy_static! {
+    pub static ref I18N: i18n::I18n = i18n::load_i18n();
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
+    pub static ref APPCONF: config::Config = config::load_config();
 }
