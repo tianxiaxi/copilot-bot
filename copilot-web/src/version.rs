@@ -15,8 +15,7 @@ pub struct VersionInfo {
 
     pub homepage: String,
 
-    /// `None` if not built from a git repo.
-    pub commit_info: Option<CommitInfo>,
+    pub commit_info: CommitInfo,
 }
 
 /// Returns information about copilot's version.
@@ -27,12 +26,12 @@ pub fn version() -> VersionInfo {
         };
     }
 
-    let version = option_env_str!("CFG_RELEASE").unwrap_or_else(|| "0.0.0".to_string());
-    let commit_info = option_env_str!("COPILOT_BOT_COMMIT_HASH").map(|commit_hash| CommitInfo {
+    let version = option_env_str!("CARGO_PKG_VERSION").unwrap_or_else(|| "0.0.0".to_string());
+    let commit_info = CommitInfo {
         short_commit_hash: option_env_str!("COPILOT_BOT_COMMIT_SHORT_HASH").unwrap(),
-        commit_hash,
+        commit_hash: option_env_str!("COPILOT_BOT_COMMIT_HASH").unwrap(),
         commit_date: option_env_str!("COPILOT_BOT_COMMIT_DATE").unwrap(),
-    });
+    };
 
     VersionInfo {
         version,

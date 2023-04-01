@@ -1,18 +1,12 @@
-use std::env;
-use std::fs;
-use std::path::Path;
+use std::process::Command;
 
 fn main() {
-    println!("cargo:rerun-if-changed=build.rs");
     commit_info();
 }
 
 /// get git commit info
 fn commit_info() {
-    if !Path::new(".git").exists() {
-        return;
-    }
-    /// command: git log -1 --abbrev=8 --date=short --format='%H %h %cd'
+    // command: git log -1 --abbrev=8 --date=short --format='%H %h %cd'
     let output = match Command::new("git")
         .arg("log")
         .arg("-1")

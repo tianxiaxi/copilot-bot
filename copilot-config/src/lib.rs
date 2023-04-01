@@ -1,7 +1,6 @@
 #[macro_use]
 extern crate lazy_static;
 
-pub mod version;
 pub mod i18n;
 pub mod config;
 

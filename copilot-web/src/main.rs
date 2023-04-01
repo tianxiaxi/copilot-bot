@@ -2,14 +2,14 @@ use std::{net::SocketAddr, str::FromStr};
 
 use tracing::info;
 use tracing_subscriber::fmt::{time, writer::MakeWriterExt};
-use copilot_web::routers;
-use copilot_config::{version, APPCONF};
+use copilot_web::{version, routers};
+use copilot_config::APPCONF;
 use copilot_utils::file;
 
 /// initliaze the logger with tracing/tracing-subscriber/tracing-appender
 fn init_log() {
     let path = file::get_execute_path().join("logs");
-    println!("The log file path: {:?}", path.display());
+    println!("The log file path: {}", path.display());
     // install global collector configured based on RUST_LOG env var.
     let stdout = std::io::stdout.with_max_level(tracing::Level::INFO);
     let logfile = tracing_appender::rolling::daily(path, "copilot-web.log");
@@ -30,8 +30,7 @@ fn init_log() {
 async fn main() {
     init_log();
 
-    println!("{:?}", APPCONF.server);
-
+    info!("Current language mode: {}", APPCONF.server.language);
     info!("Current version for copilot-bot: {:?}", version::version());
 
     let app = routers::get_app_routers();
